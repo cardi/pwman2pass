@@ -57,7 +57,7 @@ def import_passwords(pwman_input, stdin):
 
   pwlist = root[0] # we should only have one main list
   if pwlist.tag == "PwList" and pwlist.attrib['name'] == "Main":
-    processList(pwlist) 
+    processList(pwlist)
   else:
     print "possibly malformed pwman db, exiting."
     sys.exit(2)
@@ -69,7 +69,7 @@ def processList(pwlist):
   print "[list] %s" % listName
   for node in pwlist:
     if node.tag == "PwList":
-      processList(node)    
+      processList(node)
     elif node.tag == "PwItem":
       # this doesn't quite work if we have a sublist named "Main"
       processItem(node, sublist=(listName if listName != "Main" else None))
@@ -87,12 +87,12 @@ def processItem(pwitem, sublist=None):
   name = entry['name']
   if name.replace(" ", "") == "" or name == None:
     name = entry['host']
-  
+
   # build path for pass (e.g., pwman-000000/sublist/entryName)
   path = "pwman-%s/%s%s" % (str(timestamp), (sublist + "/" if sublist != None else ""), name)
 
   # replace spaces with '-'
-  path = re.sub('[ \t\r\n]', '-', path) 
+  path = re.sub('[ \t\r\n]', '-', path)
 
   # sometimes passwords are empty
   pass_entry = "" if entry['passwd'] is None else entry['passwd'];
@@ -134,7 +134,7 @@ if __name__ == '__main__':
   except OSError as e:
     print "pass not installed? exiting."
     sys.exit(2)
-  
+
   if stdin != None:
     import_passwords(stdin, stdin=True)
   elif filename != None:
