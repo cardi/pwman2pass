@@ -16,10 +16,10 @@ standard input (`STDIN`) and directly uses `pass' to import:
 
 ```bash
 # convert an already decrypted pwman db
-pwman2pass pwman.db.plaintext
+./pwman2pass.py pwman.db.plaintext
 
 # convert a db via STDIN
-gpg -d pwman.db | pwman2pass
+gpg -d pwman.db | ./pwman2pass.py
 ```
 
 Your pwman database is imported into pass under a timestamped subfolder

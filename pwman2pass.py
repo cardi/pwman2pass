@@ -3,8 +3,8 @@
 # pwman2pass.py takes in an unencrypted pwman db via filename or STDIN
 # and uses `pass' to import:
 #
-#   ./pwman2pass pwman.db.plaintext
-#   gpg -d pwman.db | ./pwman2pass
+#   ./pwman2pass.py pwman.db.plaintext
+#   gpg -d pwman.db | ./pwman2pass.py
 #
 # your pwman db is imported into pass under a timestamped subfolder (in
 # order to prevent overwriting any existing pass entries)
