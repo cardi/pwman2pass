@@ -1,40 +1,15 @@
 #!/usr/bin/env python
 #
-# pwman2pass.py takes in an unencrypted pwman db via filename or STDIN and uses 
-# `pass' to import:
+# pwman2pass.py takes in an unencrypted pwman db via filename or STDIN
+# and uses `pass' to import:
 #
-#   ./pwman2pass pwman.db.plain
+#   ./pwman2pass pwman.db.plaintext
 #   gpg -d pwman.db | ./pwman2pass
-# 
-# your pwman db is imported into pass under a timestamped subfolder (in order
-# to prevent overwriting any existing pass entries)
 #
-# Copyright (c) 2015, Calvin Ardi
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are
-# met:
-# 1. Redistributions of source code must retain the above copyright
-#    notice, this list of conditions and the following disclaimer.
-# 2. Redistributions in binary form must reproduce the above copyright
-#    notice, this list of conditions and the following disclaimer in the
-#    documentation and/or other materials provided with the distribution.
-# 3. The name of the author may not be used to endorse or promote
-#    products derived from this software without specific prior written
-#    permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
-# A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT
-# HOLDER> BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-# PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-# LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-# NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# your pwman db is imported into pass under a timestamped subfolder (in
+# order to prevent overwriting any existing pass entries)
+#
+# LICENSE: CC0 1.0 Universal
 
 import getopt, sys, select, re, random, time
 import xml.etree.ElementTree as etree
