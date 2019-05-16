@@ -94,7 +94,8 @@ def processItem(pwitem, sublist=None):
   # replace spaces with '-'
   path = re.sub('[ \t\r\n]', '-', path) 
 
-  pass_entry = entry['passwd'];
+  # sometimes passwords are empty
+  pass_entry = "" if entry['passwd'] is None else entry['passwd'];
 
   tags = ['host', 'user', 'launch']
   for t in tags:
@@ -117,8 +118,9 @@ if __name__ == '__main__':
   filename = None
   timestamp = int(time.time())
 
-  if select.select([sys.stdin,],[],[],0.0)[0]:
-    stdin = sys.stdin.read() # TODO
+  # read from stdin if there's input from stdin
+  if not sys.stdin.isatty():
+    stdin = sys.stdin.read()
   elif len(sys.argv) > 1:
     # not checking or sanitizing input
     filename = sys.argv[1]
