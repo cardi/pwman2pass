@@ -16,7 +16,8 @@ import xml.etree.ElementTree as etree
 from subprocess import Popen, PIPE
 
 # used for path
-timestamp = None;
+timestamp = None
+names = set()
 
 def import_passwords(pwman_input, stdin):
 
@@ -62,6 +63,14 @@ def processItem(pwitem, sublist=None):
   name = entry['name']
   if name.replace(" ", "") == "" or name == None:
     name = entry['host']
+  # check for duplicate names, rename as necessary
+  global names
+  if name not in names:
+    names.add(name)
+  else:
+    # name is formatted "example-0123"
+    name = "%s-%04d" % (name, random.randint(0,10000))
+    names.add(name)
 
   # build path for pass (e.g., pwman-000000/sublist/entryName)
   path = "pwman-%s/%s%s" % (str(timestamp), (sublist + "/" if sublist != None else ""), name)
